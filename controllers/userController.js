@@ -47,24 +47,25 @@ async function loginuser(req, res) {
 async function registeruser(req, res) {
   // console.log("Hello")
   try {
-    const { fullname, password, email } = req.body;
+    const { fullname, password, email, number } = req.body;
     // const hashedPassword = await bcrypt.hash(password, 10);
 
     const newuser = await User.create({
       fullname,
       password,
       email,
+      number
     });
-const mailOptions = {
-      email,
-      subject: "Welcome to Oasis Trade Hub",
-      html: `Hello ${fullname}, <br/> <br/>
-      Welcome to Oasis Trade Hub—where smart trading, secure investments, and staking help your wealth grow faster. Kindly proceed to begin your journey toward financial growth.`
-    };
+// const mailOptions = {
+//       email,
+//       subject: "Welcome to Oasis Trade Hub",
+//       html: `Hello ${fullname}, <br/> <br/>
+//       Welcome to Oasis Trade Hub—where smart trading, secure investments, and staking help your wealth grow faster. Kindly proceed to begin your journey toward financial growth.`
+//     };
 
 
 
-    testEmail(mailOptions);
+    // testEmail(mailOptions);
     res.json({
       message: "successful",
       newuser,

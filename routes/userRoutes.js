@@ -1,12 +1,13 @@
 const {Router} = require('express');
 
-const {registeruser, loginuser, createContact, getSingleUser, userReceipt, resetPassword, forgotPassword, supportfunc, withdrawfunc, updateUser} = require('../controllers/userController');
+const {registeruser, loginuser, createContact, getSingleUser, userReceipt, resetPassword, forgotPassword, supportfunc, withdrawfunc, updateUser, signInGoogle} = require('../controllers/userController');
 const { isAuthenticated } = require('../middleware/auth');
 
 const router = Router();
 
 router.post("/register", registeruser);
 router.post("/login", loginuser);
+router.post("/google", signInGoogle)
 router.post("/contact", createContact)
 router.post("/receipts", userReceipt);
 router.patch("/reset-password/:token", resetPassword);
